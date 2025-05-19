@@ -195,19 +195,6 @@ async function GetDataFromFirebase() {
     RenderChart(); // Обновляем график
 }
 
-function PostDataOnFirebase() {
-    const data = GetData();
-
-    console.log(data);
-
-    fetch(`${firebaseURL}/result.json`, {
-        method: "POST",
-        body: JSON.stringify(data),
-    }).then(() => {
-        alert("Data had been posted to Firebase");
-        GetDataFromFirebase(); // Обновляем данные после добавления
-    });
-}
   
 
 function RenderChart() {
