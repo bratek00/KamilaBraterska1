@@ -177,8 +177,8 @@ function EditTransaction(index) {
 }
 
 async function GetDataFromFirebase() {
-    const res = await fetch(`${firebaseURL}/result.json`);
-    const data = await res.json(); // Получаем данные
+    const res = await fetch('api/get');
+    const data = await res.data.json(); // Получаем данные
 
     if (!data) {
         console.log("No data found");
@@ -194,7 +194,6 @@ async function GetDataFromFirebase() {
     DisplayTransactions();
     RenderChart(); // Обновляем график
 }
-
 
 function PostDataOnFirebase() {
     const data = GetData();
