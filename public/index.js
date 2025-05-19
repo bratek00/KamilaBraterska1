@@ -178,7 +178,7 @@ function EditTransaction(index) {
 
 async function GetDataFromFirebase() {
     const res = await fetch('api/get');
-    const data = await res.data.json(); // Получаем данные
+    const data = await res.json(); // Получаем данные
 
     if (!data) {
         console.log("No data found");
