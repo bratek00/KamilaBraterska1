@@ -2,7 +2,7 @@
 async function PostDataOnFirebase() {
     const data = GetData();
     // Ждем завершения записи данных в Firebase
-    const res await fetch('/api/post', {
+    const res =  await fetch('/api/post', {
         method: "POST",
         headers: {"Content-Type": "application/json",},
         body: JSON.stringify(data),
