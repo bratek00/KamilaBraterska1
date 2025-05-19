@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Plánovač rozpočtu</title>  
+  <link rel="stylesheet" href="index.css" />
+  <script src="index.js"></script>
+  </head>
+<body>
+    <h1 style="text-align: center;">Plánovač rozpočtu</h1>
+
+  <form id="transaction-form">
+    <input type="text" id="description" placeholder="Popis" required />
+    <input type="number" id="amount" placeholder="Částka (- za výdaj)" required />
+    <input type="date" id="date" required />
+    <select id="category">
+      <option value="Potraviny">Potraviny</option>
+      <option value="Doprava">Doprava</option>
+      <option value="Zabava">Zábava</option>
+      <option value="Prijmy">Příjmy</option>
+    </select>
+    <button type="button" onclick="PostDataOnFirebase()">Přidat</button>
+  </form>
+
+  <h2>Seznam transakcí</h2>
+
+    <div id="content-container">
+        <div id="table-container">
+            <table id="transaction-table" border="1" style="width: 100%; text-align: center; border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th>Popis</th>
+                        <th>Částka</th>
+                        <th>Datum</th>
+                        <th>Kategorie</th>
+                        <th>Действия</th>
+                    </tr>
+                </thead>
+                <tbody id="transaction-list">
+                    <!-- Здесь будут добавляться строки -->
+                </tbody>
+            </table>
+        </div>
+        <div id="chart-container">
+            <h3 id="balance-display">Celková bilance: <span id="balance">0</span> Kč</h3>
+            <canvas id="expense-chart" width="500" height="500"></canvas>
+        </div>
+    </div>
+</table>
+
+   
+  <canvas id="expense-chart" width="400" height="400"></canvas>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>

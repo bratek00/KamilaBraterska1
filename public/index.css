@@ -1,0 +1,181 @@
+body {
+    font-family: Rubik, Arial, sans-serif;
+    margin: 30px;
+    background: url('money1.jpg') no-repeat center center fixed; /* Устанавливаем картинку как фон */
+    background-size: cover; /* Масштабируем картинку, чтобы она покрывала весь экран */
+    color: #333;
+}
+  h1, h2 {
+    color: #2b6777;
+  }
+  
+  form {
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #e3f2fd, #f1f9ff);
+    padding: 20px 25px;
+    border-radius: 16px;
+    border: 2px solid #2b6777;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    font-family: Rubik, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  input, select, button {
+    margin: 6px;
+    padding: 10px 14px;
+    border: 2px solid #2b6777;
+    border-radius: 8px;
+    font-family: Rubik, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  input:focus, select:focus {
+    border-color: #3a7f91;
+    box-shadow: 0 0 5px rgba(43, 103, 119, 0.4);
+  }
+  
+  button {
+    background-color: #2b6777;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-family: Rubik, Arial, sans-serif;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
+  }
+  
+  #transaction-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    border: 1px solid #c6c6c9;
+    border-radius: 7px; /* Закругленные края таблицы */
+    overflow: hidden; /* Убираем выходящие элементы за границы */
+    background-color: #ededed; /* Белый фон таблицы */
+    box-shadow: 0 4px 8px rgba(147, 66, 66, 0.1); /* Легкая тень для выделения */
+}
+
+#transaction-table th, #transaction-table td {
+    padding: 10px;
+    border: 1px solid #83919a;
+}
+
+#transaction-table th {
+    background-color: #2e7589e0; /* Фон заголовков таблицы */
+    font-weight: bold;
+    color: #ffffff; /* Белый текст */
+}
+
+#transaction-table tr:nth-child(even) {
+    background-color: #f0f2f3; /* Светло-серый фон для четных строк */
+}
+
+#transaction-table tr:nth-child(odd) {
+    background-color: #e5ecf2; /* Белый фон для нечетных строк */
+}
+
+#transaction-table tr:hover {
+    background-color: #e6f5f5; /* Цвет строки при наведении */
+}
+
+#transaction-table td {
+    padding: 10px;
+    border: 1px solid #b9cdda7c;
+    transition: background-color 0.4s ease;
+}
+
+#transaction-table td:nth-child(2) {
+    font-weight: bold;
+}
+
+#transaction-table td:nth-child(2)[style*="color: green"] {
+    background-color: #d2eed2;
+}
+
+#transaction-table td:nth-child(2)[style*="color: red"] {
+    background-color: #f3dcdc;
+}
+
+#expense-chart {
+    max-width: 400px; /* Увеличиваем максимальную ширину */
+    max-height: 400px; /* Увеличиваем максимальную высоту */
+    margin: 0 auto; /* Центрирование графика */
+    display: block;
+}
+
+#content-container {
+    display: flex; /* Используем flexbox для размещения элементов в строку */
+    justify-content: space-between; /* Пространство между таблицей и графиком */
+    align-items: flex-start; /* Выравнивание по верхнему краю */
+    gap: 20px; /* Отступ между таблицей и графиком */
+    margin-top: 20px;
+    width: 100%; /* Убедитесь, что контейнер занимает всю ширину */
+    flex-wrap: nowrap; /* Запрещаем перенос элементов на следующую строку */
+}
+
+#table-container {
+    flex: 2; /* Таблица занимает больше места */
+    min-width: 60%; /* Минимальная ширина таблицы */
+}
+
+#chart-container {
+    display: flex;
+    flex-direction: column; /* Располагаем элементы вертикально */
+    align-items: center; /* Центрируем содержимое по горизонтали */
+    gap: 10px; /* Отступ между балансом и графиком */
+    margin-top: 0; /* Убираем лишний отступ сверху */
+}
+
+#balance-display {
+    margin: 0; /* Убираем отступы */
+    font-size: 20px; /* Размер текста */
+    font-weight: bold; /* Жирный текст */
+    color: #333; /* Цвет текста */
+    text-align: center; /* Центрирование текста */
+}
+
+#chart-container h3 {
+    margin: 0;
+    font-size: 25px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Общие стили для кнопок */
+.btn {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px; /* Закругленные края */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Плавный переход для цвета и масштаба */
+}
+
+/* Стили для кнопки "Удалить" */
+.btn-delete {
+    background-color: #d04b42e2; /* Красный цвет */
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: #e31e1e; /* Более темный красный при наведении */
+    transform: scale(1.05); /* Легкое увеличение */
+}
+
+/* Стили для кнопки "Изменить" */
+.btn-edit {
+    background-color: #4191d3e6; /* Синий цвет */
+    color: white;
+}
+
+.btn-edit:hover {
+    background-color: #1976d2; /* Более темный синий при наведении */
+    transform: scale(1.05); /* Легкое увеличение */
+}
+
