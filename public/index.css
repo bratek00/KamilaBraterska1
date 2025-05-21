@@ -1,6 +1,6 @@
 body {
     font-family: Rubik, Arial, sans-serif;
-    margin: 30px;
+    margin: 30px; /* Отступы вокруг страницы */
     background: url('money1.jpg') no-repeat center center fixed; /* Устанавливаем картинку как фон */
     background-size: cover; /* Масштабируем картинку, чтобы она покрывала весь экран */
     color: #333;
@@ -9,10 +9,10 @@ body {
     color: #2b6777;
   }
   
-  form {
+  form { /* Стили формы для категорий */
     margin-bottom: 20px;
     background: linear-gradient(to right, #e3f2fd, #f1f9ff);
-    padding: 20px 25px;
+    padding: 20px 25px; /* Внутренние отступы */
     border-radius: 16px;
     border: 2px solid #2b6777;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -26,7 +26,7 @@ body {
     border: 2px solid #2b6777;
     border-radius: 8px;
     font-family: Rubik, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 14px;
+    font-size: 14px;  /*внутренний размер шрифта*/
     outline: none;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
   }
@@ -44,7 +44,7 @@ body {
     border-radius: 12px;
     font-size: 16px;
     font-family: Rubik, Arial, sans-serif;
-    cursor: pointer;
+    cursor: pointer; /* Курсор при наведении */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease, transform 0.2s ease;
 
