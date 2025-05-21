@@ -1,5 +1,6 @@
 
 async function PostDataOnFirebase() {
+    // Получаем данные из формы
     const data = GetData();
     // Ждем завершения записи данных в Firebase
     const res =  await fetch('/api/post', {
@@ -34,44 +35,50 @@ function GetData(){
 }
 
 async function GetDataFromFirebase() {
+    // Получаем данные с сервера (API)
     const res = await fetch('/api/get');
+    // Преобразуем ответ в JSON
     const data = await res.json(); // Получаем данные
 
+     // Если данных нет, очищаем массив и обновляем интерфейс
     if (!data) {
         console.log("No data found");
         allData = [];
-        UploadBalance();
-        DisplayTransactions();
+        UploadBalance(); // Обновляем баланс
+        DisplayTransactions(); // Обновляем таблицу транзакций
         RenderChart(); // Обновляем график
         return;
     }
 
+    // Преобразуем полученные данные в массив объектов
     allData = ConverDataToArray(data);
+    // Обновляем баланс, таблицу и график на странице
     UploadBalance();
     DisplayTransactions();
     RenderChart(); // Обновляем график
 }
 
 function ConverDataToArray(data) {
-    let dataArray = [];
+    let dataArray = []; // Создаем пустой массив для хранения транзакций
 
-    const keys = Object.keys(data);
+    const keys = Object.keys(data); // Получаем все ключи (id) из объекта данных
     for (let i = 0; i < keys.length; i++) {
-        const key = keys[i];
-        const value = data[key];
+        const key = keys[i]; // Текущий ключ (id транзакции)
+        const value = data[key]; // Данные по этому ключу (сама транзакция)
 
+        // Формируем объект транзакции с нужными полями
         const polozka = {
             key: key, // Сохраняем ключ для удаления/изменения
-            discription: value.popis || "Žádný popis",
-            amount: parseFloat(value.hodnota) || 0,
-            date: value.datum || "Není uvedeno",
-            category: value.categorie || "Není uvedeno",
+            discription: value.popis || "Žádný popis", // Описание (или "Žádný popis" если нет)
+            amount: parseFloat(value.hodnota) || 0, // Сумма (число, если нет — 0)
+            date: value.datum || "Není uvedeno",  // Дата (или "Není uvedeno" если нет)
+            category: value.categorie || "Není uvedeno",  // Категория (или "Není uvedeno" если нет)
         };
 
-        dataArray.push(polozka);
+        dataArray.push(polozka); // Добавляем объект транзакции в массив
     }
 
-    return dataArray;
+    return dataArray; // Возвращаем массив всех транзакций
 }
 
 // masiv = [polozka1, polozka2, polozka3]
@@ -204,8 +211,8 @@ function RenderChart() {
     const categoryExpenses = {};
 
     for (let i = 0; i < allData.length; i++) {
-        const { amount, category } = allData[i];
-        const expense = parseFloat(amount);
+        const { amount, category } = allData[i]; // Берём сумму и категорию из текущей транзакции
+        const expense = parseFloat(amount); // Преобразуем сумму из строки в число
 
         // Учитываем только расходы (отрицательные суммы)
         if (expense < 0) {
